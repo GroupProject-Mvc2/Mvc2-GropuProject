@@ -1,0 +1,64 @@
+﻿@model StefanShopWeb.ViewModels.AdminProductListViewModel
+
+@{
+    ViewData["Title"] = "Admin";
+}
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Admin</h3>
+                    <div class="section-nav">
+                        <partial name="_AdminMenu" model="@Model.MenuItems" />
+                    </div>
+                </div>
+            </div>
+            <!-- /section title -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                    <tr>
+                        <th scope="row">@product.Id</th>
+                        <td>@product.Name</td>
+                        <td>@product.CategoryName</td>
+                        <td>@product.Price</td>
+                        <td><a asp-action="EditProduct" asp-route-id="@product.Id">Edit</a></td>
+                    </tr>
+                    }
+                    </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
